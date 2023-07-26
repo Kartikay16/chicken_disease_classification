@@ -1,0 +1,25 @@
+tensorflow
+pandas 
+dvc
+notebook
+numpy
+matplotlib
+seaborn
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+scipy
+Flask
+Flask-Cors
+-e .
+  #To run setup.py adding this '-e .'
+
+# Whenever running code thats taking time so to see the progress bar on that running code use tqdm
+# pyYAML is used for reading YAML files
+# Flask is used for creating web application
+
+
+# After writing setup.py file just run the git terminal and create a virtual environment where all these requirements will be installed.

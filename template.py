@@ -26,7 +26,9 @@ list_of_files = [
     "params.yaml",
     "requirements.txt",
     "setup.py",
-    "research/trials.ipynb"
+    # Since i need to set all this src folder as my local package so for that i need to write the code in setup.py
+    "research/trials.ipynb",
+    "templates/index.html"
     #  To perform notebook experiments i am creating this research folder
 ]
 
