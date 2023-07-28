@@ -1,4 +1,4 @@
-# Using this setup.py i am creating this project as my local package
+# Using this setup.py i am creating this project src folder as my local package
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as f:

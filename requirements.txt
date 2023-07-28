@@ -23,3 +23,4 @@ Flask-Cors
 
 
 # After writing setup.py file just run the git terminal and create a virtual environment where all these requirements will be installed.
+# open the terminal and enter your newly created virtual environment and run this requirements.txt file 

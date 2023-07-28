@@ -20,6 +20,8 @@ list_of_files = [
     f"src/{project_name}/pipeline/__init__.py",
     f"src/{project_name}/entity/__init__.py",
     f"src/{project_name}/constants/__init__.py",
+    # __init__.py is a special Python file that is used to indicate that the directory it 
+    # is present in is a Python package.
     "config/config.yaml",
     "dvc.yaml" ,
     # since we will be implimenting mLOps tools so we nee this yaml files
@@ -27,6 +29,7 @@ list_of_files = [
     "requirements.txt",
     "setup.py",
     # Since i need to set all this src folder as my local package so for that i need to write the code in setup.py
+    # as this src contains all the configurations, components, pipelines etc and 
     "research/trials.ipynb",
     "templates/index.html"
     #  To perform notebook experiments i am creating this research folder
@@ -37,7 +40,7 @@ for file_path in list_of_files:
 #  I am passing all my file paths through Path because here i have used forward slash and in windows operating system
 # we use backward slashes so modifying the path to fit to windows standards
 
-# to seprate fodler name from file name
+# to seprate folder name from file name use os.path.split()
     file_dir,file_name = os.path.split(file_path)
     
     if file_dir != "":

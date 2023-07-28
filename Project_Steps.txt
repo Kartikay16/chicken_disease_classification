@@ -1,0 +1,24 @@
+Steps 
+
+1. Make a git repository on github
+2. Now make a connection using git bash terminal between folder on local machine for the project and git repository
+3. Make templates.py file -- IN this file write all the folders i want in my project 
+4. write requirments.txt file -- In this file write all the python packages and modules i want for my project
+5. write setup.py file 
+6. Open git bash terminal and create a virtual environment for my this project and after entering that virtual environment 
+   run requirements.txt file to install all the required modules and packages for the project.
+7. Now according to project workflow first work on dataINgestion part. so workflow for data ingestion is:
+	a. Update config.yaml
+	b. Update secrets.yaml [Optional]
+	c. Update params.yaml
+	d. Update the entity
+	e. Update the configuration manager in src config
+	f. Update the components	
+	g. Update the pipeline
+	h. Update the main.py
+	i. Update the dvc.yaml
+   Note: Initially make a ipynb notebook named as dataingestion test in research folder and then do the above 
+	 steps(sted d. to step g.) in  that notebook only. Once the code is verified to be running properly then 
+	 change to modular coding.
+
+8. Now working on preparing Base model
