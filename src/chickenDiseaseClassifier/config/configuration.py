@@ -1,6 +1,7 @@
 from chickenDiseaseClassifier.constants import *
+import os
 from chickenDiseaseClassifier.utils.common import read_yaml,create_directories
-from chickenDiseaseClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig
+from chickenDiseaseClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,PrepareCallbacksConfig
 
 class ConfigurationManager:
     def __init__(self,config_file_path = CONFIG_FILE_PATH,params_file_path = PARAM_FILE_PATH):
@@ -34,3 +35,16 @@ class ConfigurationManager:
                                                 params_classes = self.param.CLASSES
                                                 )
         return prepare_base_model_config
+    
+    def get_prepare_callback_config(self) -> PrepareCallbacksConfig:
+        config = self.config.prepare_callbacks
+        model_ckpt_dir = os.path.dirname(config.checkpoint_model_filepath)
+        # This is a function from the os.path module that returns the directory name component of a given file path. 
+        # It takes the file path as an argument and extracts the directory part, excluding the file name
+        create_directories([Path(model_ckpt_dir),Path(config.tensorboard_root_log_dir)])
+
+        prepare_callback_config = PrepareCallbacksConfig(root_dir = config.root_dir, 
+                                                         tensorboard_root_log_dir = config.tensorboard_root_log_dir,
+                                                         checkpoint_model_filepath = config.checkpoint_model_filepath
+                                                        )
+        return prepare_callback_config

@@ -21,4 +21,10 @@ Steps
 	 steps(sted d. to step g.) in  that notebook only. Once the code is verified to be running properly then 
 	 change to modular coding.
 
+Before moving to step 8 data validation step is also required in some projects.
+
 8. Now working on preparing Base model
+	Note: while preparing base model also follow the same steps from 'a.' to 'i.'
+
+9. Now prepare callbacks 
+	Note: while preparing callbacks also follow the same steps from 'a.' to 'i.'
