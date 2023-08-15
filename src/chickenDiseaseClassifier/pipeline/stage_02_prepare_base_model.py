@@ -17,6 +17,19 @@ class PrepareBaseModelTrainingPipeline:
         prepare_base_model.get_base_model()
         prepare_base_model.update_full_model()
 
+# The __name__ variable in Python is a special variable that holds the name of the current module or 
+# script.
+#  When a Python script is executed, Python sets the __name__ variable based on how the script is being
+#  used. There are two primary scenarios:
+
+# Script Execution:
+# When a Python script is directly executed as the main program, the __name__ variable is set to '__main__'.
+
+# Module Import:
+# When a Python script is imported as a module into another script, the __name__ variable is set to the name 
+# of the module (i.e., the name of the script without the .py extension).
+
+
 
 if __name__ == '__main__':
     try:

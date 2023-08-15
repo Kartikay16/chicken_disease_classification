@@ -1,7 +1,7 @@
 from chickenDiseaseClassifier.constants import *
 import os
 from chickenDiseaseClassifier.utils.common import read_yaml,create_directories
-from chickenDiseaseClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,PrepareCallbacksConfig
+from chickenDiseaseClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,PrepareCallbacksConfig,TrainingConfig,EvaluationConfig
 
 class ConfigurationManager:
     def __init__(self,config_file_path = CONFIG_FILE_PATH,params_file_path = PARAM_FILE_PATH):
@@ -48,3 +48,32 @@ class ConfigurationManager:
                                                          checkpoint_model_filepath = config.checkpoint_model_filepath
                                                         )
         return prepare_callback_config
+
+    def get_training_config(self) -> TrainingConfig:
+        training = self.config.training
+        param = self.param
+        prepare_base_model = self.config.prepare_base_model
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir , "Chicken-fecal-images")
+        create_directories([training.root_dir])
+
+        training_config = TrainingConfig(   root_dir = training.root_dir,
+                                            trained_model_path= training.trained_model_path,
+                                            updated_base_model_path = self.config.prepare_base_model.updated_base_model_path,
+                                            training_data = Path(training_data),
+                                            params_epochs= param.EPOCHS,
+                                            params_batch_size= param.BATCH_SIZE,
+                                            params_is_augmentation  =param.AUGMENTATION,
+                                            params_image_size= param.IMAGE_SIZE
+                                            )
+        return training_config
+
+    def get_evaluation_config(self) -> EvaluationConfig:
+
+        evaluation_config = EvaluationConfig(
+                                        path_of_model = self.config.training.trained_model_path,
+                                        training_data = os.path.join(self.config.data_ingestion.unzip_dir , "Chicken-fecal-images"),
+                                        all_params = self.params,
+                                        params_image_size= self.params.IMAGE_SIZE,
+                                        params_batch_size = self.params.BATCH_SIZE
+        )
+        return evaluation_config

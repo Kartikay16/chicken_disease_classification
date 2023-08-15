@@ -1,0 +1,79 @@
+# DVC is data version control and used for ML pipelines. I will control my ML pipelines using this dvc file.
+# write a dvc.yaml file in the project where you will specift the diffrent stages of pipleines in your project
+# along with dependencies and output.
+
+stages:
+    data_ingestion:
+      cmd: python src/chickenDiseaseClassifier/pipeline/stage_01_data_ingestion.py
+      # this is command basically for running the file at the particular location.
+      deps:
+      # Here giving the dependency i.e the files on which this data ingestion stage is dependent for running
+      # first dependency is the same file i.e file from pipeline -> dataingestion.py 
+        - src/chickenDiseaseClassifier/pipeline/stage_01_data_ingestion.py
+        - config/config.yaml
+      outs:
+        - artifacts/data_ingestion/Chicken-fecal_images
+        # I am initializing here that it will generate this chicken fecal image folder inside artifacts/data_ingestion
+        # after running this pipleine 
+
+# Basicallt in this dvc pipeline code i am telling that for running my data ingestion stage what all deps are required 
+# and my output will be stored at which location according to the code i have written.
+
+    prepare_base_model:
+      cmd: python src/chickenDiseaseClassifier/pipeline/stage_02_prepare_base_model.py
+      deps: 
+        - src/chickenDiseaseClassifier/pipeline/stage_01_data_ingestion.py
+        - config/config.yaml
+# These are the parameters which this file needs to run. see config.entity to know exactly which parameters 
+# are required to run this file. 
+      params:
+        - IMAGE_SIZE
+        - LEARNING_RATE
+        - INCLUDE_TOP
+        - WEIGHTS
+        - CLASSES
+      outs:
+        - artifacts/prepare_base_model
+      
+    
+    training:
+      cmd: python python src/chickenDiseaseClassifier/pipeline/stage_03_training.py
+      deps:
+        - src/chickenDiseaseClassifier/pipeline/stage_03_training.py
+        - config/config.yaml
+        - src/chickenDiseaseClassifier/components/prepare_callback.py
+        - artifacts/data_ingestion/Chicken_fecal-images
+        - artifacts/prepare_base_model
+      PARAMS:
+        - EPOCHS
+        - BATCH_SIZE
+        - AUGMENTATION
+        - IMAGE_SIZE
+      outs:
+        - artifacts/training/model.h5
+
+    model_evaluation:
+      cmd: python src/chickenDiseaseClassifier/pipeline/stage_04_evaluation.py
+      deps:
+        - src/chickenDiseaseClassifier/pipeline/stage_04_evaluation.py
+        - config/config.yaml
+        - artifacts/data_ingestion/Chicken_fecal-images
+        - artifacts/training/model.h5
+      params:
+        - IMAGE_SIZE
+        - BATCH_SIZE
+      metrics:
+        - scores.json:
+              cache:false
+
+
+
+# To execute our pipeline using dvc just execute the following command in git bash.
+# NOte : to use dvc we need to have git initialized because dvc runs on top of git.
+# dvc init
+# dvc repro
+# If there is a stage run already and i do dvc repro command so if nothing gets changed in that pipeline
+# so it will skip running that stage of pipeline and go to next one.
+# dvc dag for printing graph for stages of pipeline
+
+

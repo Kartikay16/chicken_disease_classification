@@ -28,3 +28,7 @@ Before moving to step 8 data validation step is also required in some projects.
 
 9. Now prepare callbacks 
 	Note: while preparing callbacks also follow the same steps from 'a.' to 'i.'
+
+10. Now create training file
+	Note: while preparing training file also follow the same steps from 'a.' to 'i.'
+
