@@ -1,7 +1,7 @@
 import tensorflow as tf
 from src.chickenDiseaseClassifier.entity.config_entity import EvaluationConfig
 from pathlib import Path
-from src.chickenDiseaseClassifier.utils.common import save_json
+from chickenDiseaseClassifier.utils.common import save_json
 
 
 
