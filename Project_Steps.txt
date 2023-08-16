@@ -32,3 +32,13 @@ Before moving to step 8 data validation step is also required in some projects.
 10. Now create training file
 	Note: while preparing training file also follow the same steps from 'a.' to 'i.'
 
+11. Now prepare model evaluation file.
+	Note: while preparing training file also follow the same steps from 'a.' to 'i.'
+
+12. Now prepare DVC.yaml file to run the pipeline using DVC.
+
+13. Create prediction file in the pipeline 
+
+14. Now finally create app.py file to integrate my code with my web app
+
+

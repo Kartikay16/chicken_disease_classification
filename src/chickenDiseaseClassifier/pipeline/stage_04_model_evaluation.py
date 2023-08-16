@@ -1,5 +1,5 @@
-from src.chickenDiseaseClassifier.config.configuration import ConfigurationManager
-from src.chickenDiseaseClassifier.components.model_evaluation import Evaluation
+from chickenDiseaseClassifier.config.configuration import ConfigurationManager
+from chickenDiseaseClassifier.components.model_evaluation import Evaluation
 from chickenDiseaseClassifier import logger
 
 

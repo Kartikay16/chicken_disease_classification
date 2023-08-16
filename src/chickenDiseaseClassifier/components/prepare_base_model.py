@@ -5,7 +5,7 @@ from keras.applications.vgg16 import VGG16
 from keras.layers import Flatten,Dense
 from keras.models import Sequential
 from pathlib import Path
-from src.chickenDiseaseClassifier.entity.config_entity import PrepareBaseModelConfig
+from chickenDiseaseClassifier.entity.config_entity import PrepareBaseModelConfig
 
 class PrepareBaseModel:
 

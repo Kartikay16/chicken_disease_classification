@@ -72,8 +72,8 @@ class ConfigurationManager:
         evaluation_config = EvaluationConfig(
                                         path_of_model = self.config.training.trained_model_path,
                                         training_data = os.path.join(self.config.data_ingestion.unzip_dir , "Chicken-fecal-images"),
-                                        all_params = self.params,
-                                        params_image_size= self.params.IMAGE_SIZE,
-                                        params_batch_size = self.params.BATCH_SIZE
+                                        all_params = self.param,
+                                        params_image_size= self.param.IMAGE_SIZE,
+                                        params_batch_size = self.param.BATCH_SIZE
         )
         return evaluation_config

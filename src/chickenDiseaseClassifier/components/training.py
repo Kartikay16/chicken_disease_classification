@@ -1,6 +1,6 @@
 import time
 import tensorflow as tf
-from src.chickenDiseaseClassifier.entity.config_entity import TrainingConfig
+from chickenDiseaseClassifier.entity.config_entity import TrainingConfig
 from pathlib import Path
 
 class Training:

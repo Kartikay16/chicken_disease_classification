@@ -1,10 +1,10 @@
 import os 
 import urllib.request as request #using this urllib.request to download the dataset from the url
 import zipfile 
-from src.chickenDiseaseClassifier import logger
-from src.chickenDiseaseClassifier.utils.common import get_size
+from chickenDiseaseClassifier import logger
+from chickenDiseaseClassifier.utils.common import get_size
 from pathlib import Path
-from src.chickenDiseaseClassifier.entity.config_entity import DataIngestionConfig
+from chickenDiseaseClassifier.entity.config_entity import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self,config: DataIngestionConfig):

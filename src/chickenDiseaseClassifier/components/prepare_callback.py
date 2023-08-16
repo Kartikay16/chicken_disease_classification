@@ -1,6 +1,6 @@
 import time
 import tensorflow as tf
-from src.chickenDiseaseClassifier.entity.config_entity import PrepareCallbacksConfig
+from chickenDiseaseClassifier.entity.config_entity import PrepareCallbacksConfig
 import os
 
 class PrepareCallback:
