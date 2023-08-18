@@ -18,13 +18,13 @@ class ModelEvaluationPipeline:
         evaluation.evaluation()
         evaluation.save_score()
 
-if __name__ == "main":
-    try:
-        logger.info(f"stage {STAGE_NAME} started succesfully >>>>>>>>> ")
-        model_evaluation_pipeline = ModelEvaluationPipeline()
-        model_evaluation_pipeline.main()
-        logger.info(f"stage {STAGE_NAME} completed succesfully <<<<<<<<<")
-    except Exception as e:
-        logger.exception(e)
-        raise e
+
+try:
+    logger.info(f"stage {STAGE_NAME} started succesfully >>>>>>>>> ")
+    model_evaluation_pipeline = ModelEvaluationPipeline()
+    model_evaluation_pipeline.main()
+    logger.info(f"stage {STAGE_NAME} completed succesfully <<<<<<<<<")
+except Exception as e:
+    logger.exception(e)
+    raise e
         

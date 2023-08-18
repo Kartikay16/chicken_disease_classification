@@ -29,13 +29,24 @@ class TrainingPipeline:
         # logger.info("Training")
         training.train(callbacks)
 
-# logger.info("Trying to enter conditional statement")
-if __name__ == "main":
-    try:
-        logger.info(f"stage {STAGE_NAME} started succesfully >>>>>>>")
-        training_pipeline = TrainingPipeline()
-        training_pipeline.main()
-        logger.info(f"stage {STAGE_NAME} completed succesfully <<<<<<<<")
-    except Exception as e:
-        logger.exception(e)
-        raise e
+# # logger.info("Trying to enter conditional statement")
+# if __name__ == "main":
+#     try:
+#         logger.info(f"stage {STAGE_NAME} started succesfully >>>>>>>")
+#         training_pipeline = TrainingPipeline()
+#         training_pipeline.main()
+#         logger.info(f"stage {STAGE_NAME} completed succesfully <<<<<<<<")
+#     except Exception as e:
+#         logger.exception(e)
+#         raise e
+
+
+STAGE_NAME = "training"
+try:
+      logger.info(f"stage {STAGE_NAME} started succesfully >>>>>>>")
+      training_pipeline = TrainingPipeline()
+      training_pipeline.main()
+      logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+      logger.exception(e)
+      raise e

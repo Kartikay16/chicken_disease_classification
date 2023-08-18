@@ -50,15 +50,15 @@ class ConfigurationManager:
         return prepare_callback_config
 
     def get_training_config(self) -> TrainingConfig:
-        training = self.config.training
+        trn = self.config.training
         param = self.param
-        prepare_base_model = self.config.prepare_base_model
+        pbm = self.config.prepare_base_model
         training_data = os.path.join(self.config.data_ingestion.unzip_dir , "Chicken-fecal-images")
-        create_directories([training.root_dir])
+        create_directories([trn.root_dir])
 
-        training_config = TrainingConfig(   root_dir = training.root_dir,
-                                            trained_model_path= training.trained_model_path,
-                                            updated_base_model_path = self.config.prepare_base_model.updated_base_model_path,
+        training_config = TrainingConfig(   root_dir = Path(trn.root_dir),
+                                            trained_model_path= Path(trn.trained_model_path),
+                                            updated_base_model_path = Path(self.config.prepare_base_model.updated_base_model_path),
                                             training_data = Path(training_data),
                                             params_epochs= param.EPOCHS,
                                             params_batch_size= param.BATCH_SIZE,
